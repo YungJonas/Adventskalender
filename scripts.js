@@ -32,7 +32,39 @@ const memeData = [
     { title: "Console.log Everything", width: 400, height: 300 }
 ];
 
+const cardBackgrounds = [
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnpvNW84YTVrYmdrdGRiMmoxc2YzMGt2ZWd2MzV2dWs0dnZiNGtjYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKpWNYDRZtChgs0/giphy.webp",    // Monday Morning Blues
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGk3b2IwYTFtcnN6enk0dHh2M29xdDNwNTgycnRpbmtzMHBma3c1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LBAv3HJDl2WwU/giphy.webp",     // When The Coffee Kicks In
+    "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjNrczVpMG1sZXQ4cTQ5OHA0MXgwZTZtczVhNXh4bGRtbmY0cjRqdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYN7mdvcZBBpEly/giphy.webp",    // Meeting That Could've Been An Email
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm5zdWI1ZTRsMmo5ZHc1dHh1cDFtd21wZTdrenNxY3BqbmNsdDBudSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6fJ3jNKx1coDEjRK/giphy.webp",         // Debugging Like...
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbThmbnV0OHJtcWpkOW5tNmNtdmp4YW1zb25iOXBwdHB5MXhvMDIyYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KGkgoPYGqJBB7brYIt/giphy.webp",    // Friday Dance
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExem8wZHpvdGppYTQxYXM4cHozdXJ6ZWt3bm9jcWwweDVrdDZkeG5sbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zEKfBVRSQHx1RY8APp/giphy.webp",     // Weekend Loading...
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW8wYm9mM3hqeGo2MWhoZmxpYzloNmVycnYxdDkyMjMyajdleXhvdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYw0DsFJc0kU0Jq/giphy.webp",    // Back to Work Like
+    "https://media.giphy.com/media/KEYbcgR8oKQzwYgK4b/giphy.gif",    // When Code Works First Try
+    "https://media.giphy.com/media/8L0Pky6C83SzkzU55a/giphy.gif",    // 404 Energy Not Found
+    "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",        // Stack Overflow Saves The Day
+    "https://media.giphy.com/media/9u514UZd57mRhnBCEk/giphy.gif",    // Deadline Approaching
+    "https://media.giphy.com/media/e6tJpLvjY8jXa/giphy.gif",         // Bug Fixed Successfully
+    "https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif",    // When Tests Pass
+    "https://media.giphy.com/media/xT9DPr4dTCYxjq4UPS/giphy.gif",    // Code Review Time
+    "https://media.giphy.com/media/54U9iFZnEWZxYc22WG/giphy.gif",    // Production Deploy Day
+    "https://media.giphy.com/media/3o7qDPfGhunRMZikI8/giphy.gif",    // Weekend Warrior
+    "https://media.giphy.com/media/Rd6sPjQFVHOSwe5tYF/giphy.gif",    // Monday.exe Stopped Working
+    "https://media.giphy.com/media/4ayiIWaq2VULC/giphy.gif",         // Pizza Time!
+    "https://media.giphy.com/media/cFkiFMDg3iFoI/giphy.gif",         // Git Push --Force
+    "https://media.giphy.com/media/3o7btNa0RUYa5E7iiQ/giphy.gif",    // npm Install Universe
+    "https://media.giphy.com/media/V4NSR1NG2p0KeJJyr5/giphy.gif",    // AI Taking Over
+    "https://media.giphy.com/media/ZYWv9qRQPomHKf4CKR/giphy.gif",    // Rubber Duck Debug
+    "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",        // CSS Position: Absolute
+    "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif"     // Console.log Everything
+];
+
 const currentDay = new Date().getDate();
+
+function updateHeading() {
+    const h1 = document.querySelector('h1');
+    h1.innerHTML = `Ho, Ho, Ho 🎅🏻<br>Heute ist der ${currentDay}. November`;
+}
 
 
 function showToast(message, duration = 3000) {
@@ -96,59 +128,49 @@ function getTimeUntilUnlock(targetDay) {
     }
 }
 
-
-
-// Modify the card creation loop
-// Then replace your existing card creation loop with this updated version:
+// Modified card creation loop
 for (let i = 1; i <= 24; i++) {
-const card = document.createElement('div');
-card.className = 'card';
+    const card = document.createElement('div');
+    card.className = 'card';
 
-// Create video element
-const video = document.createElement('video');
-video.muted = true;
-video.autoplay = true;
-video.loop = true;
-video.playsinline = true; // This is the key for iOS
-video.setAttribute('playsinline', ''); // Belt and suspenders approach
-
-// Add source to video
-const source = document.createElement('source');
-source.src = `https://nhzckxawdevezyjsyhiw.supabase.co/storage/v1/object/public/previews/scenes/quWVclasypm/preview.webm`; // Replace with your video source
-source.type = 'video/mp4';
-video.appendChild(source);
-
-// Create content div for the number
-const content = document.createElement('div');
-content.className = 'content';
-content.textContent = i;
-
-if (i > currentDay) {
-card.classList.add('locked');
-video.style.opacity = '0.7';
-}
-
-if (i === currentDay) {
-card.classList.add('today');
-}
-
-card.id = `card${i}`;
-
-// Append video and content to card
-card.appendChild(video);
-card.appendChild(content);
-
-if (i <= currentDay) {
-card.addEventListener('click', () => showPopup(i - 1));
-} else {
-card.addEventListener('click', () => {
-    const timeMessage = getTimeUntilUnlock(i);
-    showToast(timeMessage);
-});
-}
-
-slider.appendChild(card);
-
+    // Only set GIF background for unlocked cards (today and past days)
+    if (i <= currentDay) {
+        card.style.backgroundImage = `url(${cardBackgrounds[i-1]})`;
+        card.style.backgroundSize = 'cover';
+        card.style.backgroundPosition = 'center';
+    } else {
+        // For locked cards, use a simple background
+        card.style.backgroundColor = '#f5f5f5';
+    }
+    
+    // Create content div for the number
+    const content = document.createElement('div');
+    content.className = 'content';
+    content.textContent = i;
+    card.appendChild(content);
+    
+    if (i > currentDay) {
+        card.classList.add('locked');
+        // Add lock emoji
+        const lockIcon = document.createElement('div');
+    }
+    
+    if (i === currentDay) {
+        card.classList.add('today');
+    }
+    
+    card.id = `card${i}`;
+    
+    if (i <= currentDay) {
+        card.addEventListener('click', () => showPopup(i - 1));
+    } else {
+        card.addEventListener('click', () => {
+            const timeMessage = getTimeUntilUnlock(i);
+            showToast(timeMessage);
+        });
+    }
+    
+    slider.appendChild(card);
 
     // Create nav button
     const button = document.createElement('button');
@@ -218,3 +240,4 @@ function scrollToCurrentDay() {
 }
 
 window.addEventListener('load', scrollToCurrentDay);
+window.addEventListener('load', updateHeading);
